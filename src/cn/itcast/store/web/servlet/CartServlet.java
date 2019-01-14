@@ -42,4 +42,26 @@ public class CartServlet extends BaseServlet {
     	return null;
 	}
 	
+	public String removeCartItem(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		
+		Cart cart = (Cart) req.getSession().getAttribute("cart");
+		
+		String pid = req.getParameter("pid");
+		
+		cart.removeCartItem(pid);
+		
+		res.sendRedirect("/store/jsp/cart.jsp");
+    	return null;
+	}
+	
+	public String clearCart(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		
+		Cart cart = (Cart) req.getSession().getAttribute("cart");
+		
+		cart.clearCart();
+		
+		res.sendRedirect("/store/jsp/cart.jsp");
+    	return null;
+	}
+	
 }
