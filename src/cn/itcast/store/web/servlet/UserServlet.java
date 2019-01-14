@@ -129,7 +129,6 @@ public class UserServlet extends BaseServlet {
 		} catch (Exception e) {
 			//登陆失败
 			String msg = e.getMessage();
-			System.out.println(msg);
 			req.setAttribute("msg",msg);
 			return "/jsp/login.jsp";
 		}

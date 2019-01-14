@@ -12,7 +12,7 @@ public class CategoryServiceImp implements CategoryService {
 
 	@Override
 	public List<Category> getAllCats() throws SQLException {
-		CategoryDao  dao = new CategoryDaoImp();
+		CategoryDao dao = new CategoryDaoImp();
 		
 		return dao.getAllCats();
 	}

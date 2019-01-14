@@ -21,7 +21,6 @@ public class BaseServlet extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	// TODO Auto-generated method stub
     	String method = req.getParameter("method");
-    	System.out.println(method);
     	
     	if(method == null || "".equals(method) || method.trim().equals("")) {
     		method = "exectue";

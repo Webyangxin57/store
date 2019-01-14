@@ -78,8 +78,9 @@
 	var obj = {method: "findAllCats"};
 	$.post(url, obj, function(res) {
 		var li = "";
+		console.log(res)
 		res.forEach(function (elem, index) {
-			li += "<li><a href='#'>" + elem.cname + "</a></li>"
+			li += "<li><a href='/store/ProductServlet?method=findProductWithPage&num=1&cid=" + elem.cid + "'>" + elem.cname + "</a></li>"
 		});
 		$("#categoryList").html(li)
 		//用户频繁访问 每次都要查库 性能低 可以使用redis
