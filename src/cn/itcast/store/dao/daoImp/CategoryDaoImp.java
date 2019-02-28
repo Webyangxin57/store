@@ -20,4 +20,12 @@ public class CategoryDaoImp implements CategoryDao {
 		return list;
 	}
 
+	@Override
+	public void addCategory(Category category) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "insert into category values(?,?)";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql, category.getCid(), category.getCname());
+	}
+
 }

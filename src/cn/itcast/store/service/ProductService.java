@@ -14,4 +14,6 @@ public interface ProductService {
 	Product findProductByPid(String pid)  throws SQLException;
 
 	PageModel findProductWithPage(String cid, int num) throws SQLException;
+
+	PageModel findProductWithPage(int num) throws SQLException;
 }

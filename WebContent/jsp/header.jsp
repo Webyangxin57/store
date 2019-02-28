@@ -24,7 +24,7 @@
 						<li>欢迎,${loginUser.username}</li>
 						<li><a href="${pageContext.request.contextPath}/UserServlet?method=logOut">登出</a></li>
 						<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
-						<li><a href="${pageContext.request.contextPath}/jsp/order_list.jsp">我的订单</a></li>
+						<li><a href="${pageContext.request.contextPath}/OrderServlet?method=findMyOrderWithPage&num=1">我的订单</a></li>
 					</c:if>
 					<c:if test="${empty loginUser}">
 						<li><a href="${pageContext.request.contextPath}/UserServlet?method=loginUI">登录</a></li>

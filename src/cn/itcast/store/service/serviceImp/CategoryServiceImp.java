@@ -7,6 +7,8 @@ import cn.itcast.store.dao.CategoryDao;
 import cn.itcast.store.dao.daoImp.CategoryDaoImp;
 import cn.itcast.store.domain.Category;
 import cn.itcast.store.service.CategoryService;
+import cn.itcast.store.utils.JedisUtils;
+import redis.clients.jedis.Jedis;
 
 public class CategoryServiceImp implements CategoryService {
 
@@ -15,6 +17,17 @@ public class CategoryServiceImp implements CategoryService {
 		CategoryDao dao = new CategoryDaoImp();
 		
 		return dao.getAllCats();
+	}
+
+	@Override
+	public void addCategory(Category category) throws SQLException {
+		// TODO Auto-generated method stub
+		CategoryDao dao = new CategoryDaoImp();
+		dao.addCategory(category);
+		//清空jedis缓存
+		Jedis jedis = JedisUtils.getJedis();
+		jedis.del("allCats");
+		JedisUtils.closeJedis(jedis);
 	}
 
 }

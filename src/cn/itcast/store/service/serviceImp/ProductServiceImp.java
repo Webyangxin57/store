@@ -39,12 +39,28 @@ public class ProductServiceImp implements ProductService {
 
 		PageModel pm = new PageModel(num, total, 12);
 
-		List list = dao.findProductWithPage(cid, pm.getStartIndex(), pm.getPageSize());
+		List list = dao.findProductWithPage(pm.getStartIndex(), pm.getPageSize());
 		pm.setList(list);
 		pm.setUrl("/ProductServlet?method=findProductWithPage&cid=" + cid);
 
 		return pm;
 		
+	}
+
+	@Override
+	public PageModel findProductWithPage(int num) throws SQLException {
+		//创建pagemodel对象 计算分页参数
+				//统计当前cid分类下商品个数
+
+				int total = dao.findTotal();
+
+				PageModel pm = new PageModel(num, total, 12);
+
+				List list = dao.findProductWithPage(pm.getStartIndex(), pm.getPageSize());
+				pm.setList(list);
+				pm.setUrl("/AdminProductServlet?method=findProductWithPage&");
+
+				return pm;
 	}
 
 }

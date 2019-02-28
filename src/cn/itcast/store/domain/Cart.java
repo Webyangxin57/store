@@ -54,7 +54,7 @@ public class Cart {
 		this.map = map;
 	}
 	
-	public Collection getCartItems(){
+	public Collection<CartItem> getCartItems(){
 		return map.values();
 	}
 }

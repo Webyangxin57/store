@@ -56,4 +56,20 @@ public class ProductDaoImp implements ProductDao {
 		return qr.query(sql, new BeanListHandler<Product>(Product.class),cid, num, i);
 	}
 
+	@Override
+	public int findTotal() throws SQLException {
+		String sql = "select count(*) from product";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		Long num = (Long)qr.query(sql, new ScalarHandler());
+		return num.intValue();
+	}
+
+	@Override
+	public List findProductWithPage(int startIndex, int pageSize) throws SQLException {
+		String sql = "select * from product limit ?,?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		
+		return qr.query(sql, new BeanListHandler<Product>(Product.class), startIndex, pageSize);
+	}
+
 }
