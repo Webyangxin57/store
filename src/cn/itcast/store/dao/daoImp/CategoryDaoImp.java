@@ -28,4 +28,11 @@ public class CategoryDaoImp implements CategoryDao {
 		qr.update(sql, category.getCid(), category.getCname());
 	}
 
+	@Override
+	public void deleteCategory(String cid)  throws SQLException{
+		String sql = "delete from category where cid = ?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql, cid);
+	}
+
 }

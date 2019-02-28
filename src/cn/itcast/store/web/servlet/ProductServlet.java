@@ -33,6 +33,6 @@ public class ProductServlet extends BaseServlet {
 		PageModel pm = service.findProductWithPage(num);
 		req.setAttribute("page", pm);
 	
-		return "/admin/product/list.jsp";
+		return "/jsp/product_list.jsp";
 	}
 }

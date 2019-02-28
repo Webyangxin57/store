@@ -30,4 +30,14 @@ public class CategoryServiceImp implements CategoryService {
 		JedisUtils.closeJedis(jedis);
 	}
 
+	@Override
+	public void deleteCategory(String cid) throws SQLException {
+		CategoryDao dao = new CategoryDaoImp();
+		dao.deleteCategory(cid);
+		//清空jedis缓存
+		Jedis jedis = JedisUtils.getJedis();
+		jedis.del("allCats");
+		JedisUtils.closeJedis(jedis);		
+	}
+
 }

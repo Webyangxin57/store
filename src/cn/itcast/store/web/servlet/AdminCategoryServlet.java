@@ -1,5 +1,6 @@
 package cn.itcast.store.web.servlet;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class AdminCategoryServlet extends BaseServlet {
     	return "/admin/category/add.jsp";
 	}
 	
-	public String addCategory(HttpServletRequest req, HttpServletResponse res) throws SQLException {
+	public String addCategory(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String cname = req.getParameter("cname");
 		String cid = UUIDUtils.getCode();
 		Category category = new Category();
@@ -39,6 +40,15 @@ public class AdminCategoryServlet extends BaseServlet {
 		category.setCname(cname);
 		CategoryService service = new CategoryServiceImp();
 		service.addCategory(category);
-    	return "/store/AdminCategoryServlet?method=findAllCarts";
+		res.sendRedirect("/store/AdminCategoryServlet?method=findAllCarts");
+		return null;
+	}
+	
+	public String deleteCategory(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		String cid = req.getParameter("cid");
+		CategoryService service = new CategoryServiceImp();
+		service.deleteCategory(cid);
+		res.sendRedirect("/store/AdminCategoryServlet?method=findAllCarts");
+		return null;
 	}
 }

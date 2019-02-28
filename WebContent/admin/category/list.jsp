@@ -65,13 +65,13 @@
 												${item.cname}
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="${pageContext.request.contextPath}/AdminCategoryServlet?method=addCategory">
+												<a href="${pageContext.request.contextPath}/AdminCategoryServlet?method=addCategoryUI">
 													<img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 									
 											<td align="center" style="HEIGHT: 22px">
-												<a href="#">
+												<a href="${pageContext.request.contextPath}/AdminCategoryServlet?method=deleteCategory&&cid=${item.cid}" >
 													<img src="${pageContext.request.contextPath}/img/admin/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>

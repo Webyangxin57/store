@@ -11,4 +11,6 @@ public interface CategoryDao {
 
 	void addCategory(Category category)  throws SQLException;
 
+	void deleteCategory(String cid) throws SQLException;
+
 }
